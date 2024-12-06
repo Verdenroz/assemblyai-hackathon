@@ -1,5 +1,8 @@
 package com.verdenroz.fiveshades
 
+import com.verdenroz.fiveshades.model.Shade
+import com.verdenroz.fiveshades.network.OpenAIDataASource
+import kotlinx.coroutines.runBlocking
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -11,7 +14,11 @@ import org.junit.Assert.*
  */
 class ExampleUnitTest {
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun testOpenAI() {
+        val openAI = OpenAIDataASource
+        runBlocking {
+            val response = openAI.getResponseForShade(Shade.RED, "This is a test")
+            println(response)
+        }
     }
 }
